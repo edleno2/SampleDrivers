@@ -6,8 +6,10 @@ local defaults = require "st.zigbee.defaults"
 local contact_sensor_defaults = require "st.zigbee.defaults.contactSensor_defaults"
 local data_types = require "st.zigbee.data_types"
 local common = require("common")
+local log = require "log"
 
 local function ias_zone_status_change_handler(driver, device, zb_rx)
+    log.info("EDLENO - Getting a zone status change message")
     if (device.preferences.garageSensor ~= "Yes") then
         contact_sensor_defaults.ias_zone_status_change_handler(driver, device, zb_rx)
     end

@@ -1,4 +1,9 @@
 zigbeeManufacturer:
+  - id: "CentraLite/3321-S"
+    deviceLabel: Multipurpose Sensor
+    manufacturer: CentraLite
+    model: 3321-S
+    deviceProfileName: st-multipurpose
   - id: "Samjin/multi"
     deviceLabel: Multipurpose Sensor
     manufacturer: Samjin

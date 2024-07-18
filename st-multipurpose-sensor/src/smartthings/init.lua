@@ -4,12 +4,19 @@ local battery = capabilities.battery
 local battery_defaults = require "st.zigbee.defaults.battery_defaults"
 local common = require("common")
 local utils = require "st.utils"
+local log = require "log"
 
 local can_handle = function(opts, driver, device)
+    log.info("EDLENO - can_handle device manufacturer is: " .. device:get_manufacturer())
+    if device:get_manufacturer() == "CentraLite" then
+        return true
+    end
+
     return device:get_manufacturer() == "SmartThings"
 end
 
 local battery_handler = function(driver, device, value, zb_rx)
+    log.info("EDLENO - mapping the batter power level")
     local batteryMap = {[28] = 100, [27] = 100, [26] = 100, [25] = 90, [24] = 90, [23] = 70,
                       [22] = 70, [21] = 50, [20] = 50, [19] = 30, [18] = 30, [17] = 15, [16] = 1, [15] = 0}
     local minVolts = 15
